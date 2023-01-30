@@ -20,6 +20,7 @@ def inviaMessaggio(studente):
     bot.send_message(chat_id=-873790098, text=text, parse_mode="html")
 
 def invio(messaggio):
+    print("ma dai cazzo")
     bot.send_message(chat_id=-873790098, text=messaggio)
 
 #bot.infinity_polling()
