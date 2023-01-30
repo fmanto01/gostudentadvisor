@@ -54,7 +54,7 @@ def main():
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, 'html.parser')
     
-    mioTelegram.avviso("inizio ricerca")
+    mioTelegram.invio("inizio ricerca")
 
     s = soup.find("div", {"id":"6878166"}) #file di informatica, potrebbe cambiare nel tempo?
     s = s.contents[0].contents[0].contents[1]  #questo è il tbody
