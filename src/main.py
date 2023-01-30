@@ -5,14 +5,14 @@ import studente
 import mioTelegram
 from ischedule import schedule, run_loop
 
-studenti = []
-codici = []
 
+codici = []
 
 #ogni volta devo svuotarla immagino
 def riempiLista(s):
     index = 0
     limit = 20
+    studenti=[]
     for riga in s:
 
         materia = riga.contents[1].string
@@ -32,7 +32,7 @@ def riempiLista(s):
         
         index +=1
         if index >= limit: #piccola cosa quasi inutile per ridurre
-            break
+            return studenti
 
 def leggiVecchiCodici():
     with open('codici.txt', 'r', encoding="utf-8") as f:
@@ -61,7 +61,7 @@ def main():
     s = s.contents[0].contents[0].contents[1]  #questo è il tbody
 
     vecchiCodici = leggiVecchiCodici()
-    riempiLista(s)
+    studenti = riempiLista(s)
     print(studenti[0])
     mergeCodici(vecchiCodici, studenti)
     scriviCodici()
