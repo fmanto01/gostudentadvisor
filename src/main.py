@@ -46,8 +46,8 @@ def scriviCodici():
 def mergeCodici(vecchi, studenti):
     for s in studenti:
         if s.numero not in vecchi:
-            pass
-            #mioTelegram.inviaMessaggio(s)
+            
+            mioTelegram.inviaMessaggio(s)
 
 def main():
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxa-l5fqDBv5hOuNQ5q0kW19YOpPHAMe-kITWnBR567PIBhYkklOzpbjz-td77hY-jBw5_KGyz1fX7/pubhtml?gid=6878166&&range=A1:H&widget=false&chrome=false&headers=false&"
@@ -66,5 +66,6 @@ def main():
 def caso():
     print("ciao")
 if __name__ == "__main__":
-    schedule(caso, interval=3)
-    run_loop()
+    """ schedule(caso, interval=3)
+    run_loop() """
+    main()
