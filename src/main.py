@@ -50,7 +50,7 @@ def mergeCodici(vecchi, studenti):
             mioTelegram.inviaMessaggio(s)
 
 def main():
-    """ print("prima riga")
+    print("prima riga")
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxa-l5fqDBv5hOuNQ5q0kW19YOpPHAMe-kITWnBR567PIBhYkklOzpbjz-td77hY-jBw5_KGyz1fX7/pubhtml?gid=6878166&&range=A1:H&widget=false&chrome=false&headers=false&"
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, 'html.parser')
@@ -62,11 +62,10 @@ def main():
 
     vecchiCodici = leggiVecchiCodici()
     riempiLista(s)
+    print(studenti[0])
     mergeCodici(vecchiCodici, studenti)
-    scriviCodici() """
-    print("inizio")
-    mioTelegram.invio("inizio ricerca")
-    print("finito")
+    scriviCodici()
+
 
 if __name__ == "__main__":
     main()
