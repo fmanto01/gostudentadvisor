@@ -66,5 +66,4 @@ def main():
 
 
 if __name__ == "__main__":
-    schedule(main, interval=15*60)
-    run_loop()
+    main()
