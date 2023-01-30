@@ -1,5 +1,5 @@
 
-import requests
+import ./Lib/requests
 from bs4 import BeautifulSoup
 import studente
 import mioTelegram
