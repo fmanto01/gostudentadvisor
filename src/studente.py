@@ -11,4 +11,4 @@ class student:
         self.numero = numero
 
     def __str__(self):
-        return f"{self.genere} {self.numero}"
+        return f"{self.materia} ### {self.info}"

@@ -2,6 +2,8 @@
 import requests
 from bs4 import BeautifulSoup
 import studente
+import mioTelegram
+from ischedule import schedule, run_loop
 
 studenti = []
 codici = []
@@ -21,7 +23,8 @@ def riempiLista(s):
             anno = riga.contents[4].string
             lezioni = riga.contents[5].string
             go = riga.contents[6].string
-            info = riga.contents[7].string
+            
+            info = riga.contents[7].get_text()
             numero = riga.contents[8].string.split()[1]
 
             codici.append(numero)
@@ -40,20 +43,28 @@ def scriviCodici():
         for c in codici:
             f.write(f"{c} ")
 
-def mergeCodici(vecchi, nuovi):
-    for n in nuovi:
-        if n not in vecchi:
-            print("avvisiamo telegram")
+def mergeCodici(vecchi, studenti):
+    for s in studenti:
+        if s.numero not in vecchi:
+            pass
+            #mioTelegram.inviaMessaggio(s)
 
-if __name__ == "__main__":
+def main():
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxa-l5fqDBv5hOuNQ5q0kW19YOpPHAMe-kITWnBR567PIBhYkklOzpbjz-td77hY-jBw5_KGyz1fX7/pubhtml?gid=6878166&&range=A1:H&widget=false&chrome=false&headers=false&"
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, 'html.parser')
+    
 
     s = soup.find("div", {"id":"6878166"}) #file di informatica, potrebbe cambiare nel tempo?
     s = s.contents[0].contents[0].contents[1]  #questo è il tbody
 
     vecchiCodici = leggiVecchiCodici()
     riempiLista(s)
-    mergeCodici(vecchiCodici, codici)
+    mergeCodici(vecchiCodici, studenti)
     scriviCodici()
+
+def caso():
+    print("ciao")
+if __name__ == "__main__":
+    schedule(caso, interval=3)
+    run_loop()
