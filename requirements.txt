@@ -1,0 +1,5 @@
+distlib==0.3.6
+filelock==3.9.0
+platformdirs==2.6.2
+soupsieve==2.3.2.post1
+virtualenv==20.17.1
