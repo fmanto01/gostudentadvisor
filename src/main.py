@@ -50,12 +50,13 @@ def mergeCodici(vecchi, studenti):
             mioTelegram.inviaMessaggio(s)
 
 def main():
+    print("prima riga")
     URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxa-l5fqDBv5hOuNQ5q0kW19YOpPHAMe-kITWnBR567PIBhYkklOzpbjz-td77hY-jBw5_KGyz1fX7/pubhtml?gid=6878166&&range=A1:H&widget=false&chrome=false&headers=false&"
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, 'html.parser')
-    
+    print("prima riga")
     mioTelegram.invio("inizio ricerca")
-
+    print("prima riga")
     s = soup.find("div", {"id":"6878166"}) #file di informatica, potrebbe cambiare nel tempo?
     s = s.contents[0].contents[0].contents[1]  #questo è il tbody
 
