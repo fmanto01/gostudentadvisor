@@ -46,8 +46,8 @@ def scriviCodici():
 def mergeCodici(vecchi, studenti):
     for s in studenti:
         if s.numero not in vecchi:
-            
-            mioTelegram.inviaMessaggio(s)
+            pass
+            #mioTelegram.inviaMessaggio(s)
 
 def main():
     print("prima riga")
@@ -55,7 +55,7 @@ def main():
     r = requests.get(URL)
     soup = BeautifulSoup(r.content, 'html.parser')
     print("prima riga")
-    mioTelegram.invio("inizio ricerca")
+    #mioTelegram.invio("inizio ricerca")
     print("prima riga")
     s = soup.find("div", {"id":"6878166"}) #file di informatica, potrebbe cambiare nel tempo?
     s = s.contents[0].contents[0].contents[1]  #questo è il tbody
