@@ -63,9 +63,7 @@ def main():
     mergeCodici(vecchiCodici, studenti)
     scriviCodici()
 
-def caso():
-    print("ciao")
+
 if __name__ == "__main__":
-    """ schedule(caso, interval=3)
-    run_loop() """
-    main()
+    schedule(main, interval=15*60)
+    run_loop()
