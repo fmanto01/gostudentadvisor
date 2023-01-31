@@ -9,6 +9,8 @@ bot = telebot.TeleBot(TOKEN)
 def inviaMessaggio(studente):
     text = ""
     text += f"<b>{studente.materia}</b>"
+    if studente.materia == "informatica" || studente.materia == "Informatica" || studente.materia == "INFORMATICA"
+        text += "🖥️"
     text += "\n"
     text += studente.info
     text += "\n"
