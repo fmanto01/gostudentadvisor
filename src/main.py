@@ -78,5 +78,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    """ schedule(main, interval=2*60)
-    run_loop() """
+    schedule(main, interval=2*60)
+    run_loop()
