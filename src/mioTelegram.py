@@ -15,12 +15,11 @@ def inviaMessaggio(studente):
     text += "\n"
     text += studente.lezioni
     text += "\n"
-    #text += f"<a target='_blank' rel='noreferrer' href='https://www.google.com/url?q=https://api.whatsapp.com/send?phone%3D390230566620%26text%3D1327282322&amp;sa=D&amp;source=editors&amp;ust=1675061479155087&amp;usg=AOvVaw0I97OsdXFBS449J9eA6J7g'>Riferimento: {studente.numero}</a>"
+    text += f"<a  href='{studente.walink}'>Riferimento: {studente.numero}</a>"
     
     bot.send_message(chat_id=-873790098, text=text, parse_mode="html")
 
 def invio(messaggio):
-    print("ma dai cazzo")
     bot.send_message(chat_id=-873790098, text=messaggio)
 
 #bot.infinity_polling()
