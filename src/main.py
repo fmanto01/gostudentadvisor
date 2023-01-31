@@ -75,17 +75,17 @@ def main():
 
     for i in range(2):
         r = requests.get(URLS[i])
-        soup = BeautifulSoup(r.content, 'html.parser')
-        print("dimensione studenti ",sys.getsizeof(soup))
+        s = BeautifulSoup(r.content, 'html.parser')
+        #print("dimensione studenti ",sys.getsizeof(soup))
         #print("prima riga")
         #mioTelegram.invio("inizio ricerca")
         #print("prima riga")
-        s = soup.find("div", {"id":IDS[i]}) #file di informatica, potrebbe cambiare nel tempo?
+        s = s.find("div", {"id":IDS[i]}) #file di informatica, potrebbe cambiare nel tempo?
         s = s.contents[0].contents[0].contents[1]  #questo è il tbody
-        soup = 0
+
         vecchiCodici = leggiVecchiCodici(i)
         studenti = riempiLista(s)
-       
+        s.decompose()
         #print(studenti[0])
         mergeCodici(vecchiCodici, studenti)
         scriviCodici(i)
@@ -93,5 +93,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    schedule(main, interval=15*60)
+    schedule(main, interval=0.7*60)
     run_loop()
