@@ -1,12 +1,12 @@
 class student:
 
-    def __init__(self, materia="", genere="", eta="", anno="", lezioni="", go="", info="", numero="", walink=""):
+    def __init__(self, materia="", lezioni="", info="", numero="", walink=""):
         self.materia = materia
-        self.genere = genere
-        self.eta = eta
-        self.anno = anno
+        #self.genere = genere
+        #self.eta = eta
+        #self.anno = anno
         self.lezioni = lezioni
-        self.go = go
+        #self.go = go
         self.info = info
         self.numero = numero
         self.walink = walink

@@ -21,14 +21,16 @@ def riempiLista(s):
     studenti=[]
     for riga in s:
 
-        materia = riga.contents[1].string
-        if materia!=None and index!=0:
+        
+        materia = riga.contents[1].string   #mhhhh, può creare problemi?
+        if materia!=None and index!=0:  #questo index!= l'ho messo perchè l'albero html mi costringeva, non ricordo il motivo preciso
+            materia = str(materia)
+            #genere = riga.contents[2].string
+            #eta = riga.contents[3].string
+            #anno = riga.contents[4].string
+            lezioni = str(riga.contents[5].string)
             
-            genere = riga.contents[2].string
-            eta = riga.contents[3].string
-            anno = riga.contents[4].string
-            lezioni = riga.contents[5].string
-            go = riga.contents[6].string
+            #go = riga.contents[6].string
             
             info = riga.contents[7].get_text()
             ####
@@ -37,11 +39,22 @@ def riempiLista(s):
             #print(walink)
             ####
             codici.append(numero)
-            studenti.append(studente.student(materia, genere, eta, anno, lezioni, go, info, numero, walink))
+            studenti.append(studente.student(materia, lezioni, info, numero, walink))
+            
+            """ print(type(materia))
+            print(type(lezioni))
+            print(type(info))
+            print(type(numero))
+            print(type(walink)) 
+            print("-----------") """
+            
+
+
         
         index +=1
-        if index >= limit: #piccola cosa quasi inutile per ridurre
+        if index >= limit:
             return studenti
+    return studenti #nel caso, non si sa mai che la tabella sia più corta di 30 righe
 
 def leggiVecchiCodici(i):
     with open(f'codici{i}.txt', 'r', encoding="utf-8") as f:
@@ -71,7 +84,7 @@ def main():
 
         vecchiCodici = leggiVecchiCodici(i)
         studenti = riempiLista(s)
-        #print(studenti[0])
+        print(studenti[0])
         mergeCodici(vecchiCodici, studenti)
         scriviCodici(i)
 
