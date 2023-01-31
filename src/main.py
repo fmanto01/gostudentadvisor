@@ -31,10 +31,13 @@ def riempiLista(s):
             go = riga.contents[6].string
             
             info = riga.contents[7].get_text()
+            ####
             numero = riga.contents[8].string.split()[1]
-
+            walink = riga.contents[8].contents[0]['href']
+            #print(walink)
+            ####
             codici.append(numero)
-            studenti.append(studente.student(materia, genere, eta, anno, lezioni, go, info, numero))
+            studenti.append(studente.student(materia, genere, eta, anno, lezioni, go, info, numero, walink))
         
         index +=1
         if index >= limit: #piccola cosa quasi inutile per ridurre
@@ -60,7 +63,7 @@ def main():
     for i in range(2):
         r = requests.get(URLS[i])
         soup = BeautifulSoup(r.content, 'html.parser')
-        print("prima riga")
+        #print("prima riga")
         #mioTelegram.invio("inizio ricerca")
         print("prima riga")
         s = soup.find("div", {"id":IDS[i]}) #file di informatica, potrebbe cambiare nel tempo?
@@ -75,5 +78,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    schedule(main, interval=2*60)
-    run_loop()
+    """ schedule(main, interval=2*60)
+    run_loop() """
