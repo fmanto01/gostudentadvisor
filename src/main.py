@@ -58,25 +58,25 @@ def mergeCodici(vecchi, studenti):
             mioTelegram.inviaMessaggio(s)
 
 def main():
-    print("prima riga")
+    
 
     for i in range(2):
         r = requests.get(URLS[i])
         soup = BeautifulSoup(r.content, 'html.parser')
         #print("prima riga")
         #mioTelegram.invio("inizio ricerca")
-        print("prima riga")
+        #print("prima riga")
         s = soup.find("div", {"id":IDS[i]}) #file di informatica, potrebbe cambiare nel tempo?
         s = s.contents[0].contents[0].contents[1]  #questo è il tbody
 
         vecchiCodici = leggiVecchiCodici(i)
         studenti = riempiLista(s)
-        print(studenti[0])
+        #print(studenti[0])
         mergeCodici(vecchiCodici, studenti)
         scriviCodici(i)
 
 
 if __name__ == "__main__":
     main()
-    schedule(main, interval=2*60)
+    schedule(main, interval=15*60)
     run_loop()
