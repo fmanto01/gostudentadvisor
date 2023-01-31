@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import studente
 import mioTelegram
 from ischedule import schedule, run_loop
-
+import sys
 
 URLS = ["https://docs.google.com/spreadsheets/d/e/2PACX-1vSxa-l5fqDBv5hOuNQ5q0kW19YOpPHAMe-kITWnBR567PIBhYkklOzpbjz-td77hY-jBw5_KGyz1fX7/pubhtml?gid=6878166&&range=A1:H&widget=false&chrome=false&headers=false&",
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vSxa-l5fqDBv5hOuNQ5q0kW19YOpPHAMe-kITWnBR567PIBhYkklOzpbjz-td77hY-jBw5_KGyz1fX7/pubhtml?gid=695965261&range=A1:H&widget=false&chrome=false&headers=false&"]
@@ -76,15 +76,17 @@ def main():
     for i in range(2):
         r = requests.get(URLS[i])
         soup = BeautifulSoup(r.content, 'html.parser')
+        print("dimensione studenti ",sys.getsizeof(soup))
         #print("prima riga")
         #mioTelegram.invio("inizio ricerca")
         #print("prima riga")
         s = soup.find("div", {"id":IDS[i]}) #file di informatica, potrebbe cambiare nel tempo?
         s = s.contents[0].contents[0].contents[1]  #questo è il tbody
-
+        soup = 0
         vecchiCodici = leggiVecchiCodici(i)
         studenti = riempiLista(s)
-        print(studenti[0])
+       
+        #print(studenti[0])
         mergeCodici(vecchiCodici, studenti)
         scriviCodici(i)
 
