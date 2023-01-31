@@ -24,11 +24,11 @@ def riempiLista(s):
         materia = riga.contents[1].string
         if materia!=None and index!=0:
             
-            genere = riga.contents[2].string
-            eta = riga.contents[3].string
-            anno = riga.contents[4].string
+            #genere = riga.contents[2].string
+            #eta = riga.contents[3].string
+            #anno = riga.contents[4].string
             lezioni = riga.contents[5].string
-            go = riga.contents[6].string
+            #go = riga.contents[6].string
             
             info = riga.contents[7].get_text()
             ####
@@ -37,7 +37,7 @@ def riempiLista(s):
             #print(walink)
             ####
             codici.append(numero)
-            studenti.append(studente.student(materia, genere, eta, anno, lezioni, go, info, numero, walink))
+            studenti.append(studente.student(materia, lezioni, info, numero, walink))
         
         index +=1
         if index >= limit: #piccola cosa quasi inutile per ridurre
